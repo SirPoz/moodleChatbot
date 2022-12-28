@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/chatbot/db" VERSION="20200212" COMMENT="XMLDB file for Moodle mod/chatbot"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="chatbot" COMMENT="Defines chatbot knowledge">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="saves the courseID in which the chatbot is saved"/>
+        <FIELD NAME="name" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="intro" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="the last time this chatbot instance was modified"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="chatbot_courses" COMMENT="Info about course specific packages">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="packageid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for chatbot_courses"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="chatbot_packages" COMMENT="Saves all chatbot_instances.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="packageid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="packagename" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="question" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="keyword1" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="keyword2" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="keyword3" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="keyword4" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="answer" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="authorid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="public" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timesused" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for chatbot"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

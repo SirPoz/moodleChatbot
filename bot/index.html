@@ -1,0 +1,110 @@
+<script>
+  window.onload = function(){
+
+    document.getElementById("chatbot_initiate").style.display = "inherit";
+    document.getElementById("chatbot_window").style.display = "none";
+  };
+  function toggleChatbot(){
+    var btn = document.getElementById("chatbot_initiate");
+    var chatbot = document.getElementById("chatbot_window");
+
+
+
+    if(chatbot.style.display == "none")
+    {
+
+      chatbot.style.display = "inherit";
+      btn.style.display = "none";
+    }
+    else if(btn.style.display == "none")
+    {
+
+      chatbot.style.display = "none";
+      btn.style.display = "inherit";
+    }
+  }
+
+</script>
+
+<div id="chatbot_initiate" onclick="toggleChatbot()"></div>
+<div id="chatbot_window">
+  <div id="chatbot_menu_bar">
+    <div id="chatbot_menu_bar_close" onclick="toggleChatbot()">X</div>
+  </div>
+  <div id="chatbot_iframe_container">
+    <iframe src="bot.php" id="chatbot_iframe" frameborder="0">
+
+
+    </iframe>
+  </div>
+</div>
+<style>
+#chatbot_initiate{
+
+  height:60px;
+  width:60px;
+  background-color:green;
+
+  position:fixed;
+  bottom:30px;
+  right:40px;
+
+  display:inherit;
+}
+#chatbot_window{
+  height:500px;
+  width:400px;
+
+  position:fixed;
+  bottom:30px;
+  right:40px;
+
+  border:1px solid grey;
+  border-radius: 5px;
+  display:none;
+}
+#chatbot_menu_bar{
+  width:100%;
+  height:50px;
+
+  position:absolute;
+  top:0;
+
+  background-image:linear-gradient(90deg, rgb(140, 179, 35), rgb(0, 100, 155));
+}
+#chatbot_menu_bar_close{
+  height:50px;
+  width:50px;
+  background-color:rgba(255,255,255,0);
+
+  font-size:40px;
+  font-family:sans-serif;
+  color:white;
+
+  align-content: center;
+  text-align: center;
+
+  position:absolute;
+  right:0;
+  transition:0.3s;
+  cursor:pointer;
+  -ms-user-select: None;
+  -moz-user-select: None;
+  -webkit-user-select: None;
+  user-select: None;
+}
+#chatbot_menu_bar_close:hover{
+  background-color:rgba(255,255,255,0.3);
+}
+#chatbot_iframe_container{
+  width:100%;
+  height:450px;
+
+  position:absolute;
+  bottom:0px;
+}
+#chatbot_iframe{
+  width:100%;
+  height:100%;
+}
+</style>
